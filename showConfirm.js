@@ -39,7 +39,7 @@ export default async function showConfirm(message, callbacks = []) {
     });
   } else if (okCallback.function === null) {
     // don't show ok button if ok is overriden by null
-    okBtnEl.style.display = 'none';
+    okBtnEl.remove();
   } else {
     okBtnEl.textContent = okCallback.label ?? 'OK';
     okBtnEl.addEventListener('click', () => {
@@ -59,6 +59,16 @@ export default async function showConfirm(message, callbacks = []) {
     });
     alertEl.querySelector('div.buttons').appendChild(buttonEl);
   });
+
+  // if no button is created any click will close the alert
+  const buttonEls = alertEl.querySelectorAll('button');
+  if (buttonEls.length === 0) {
+    alertEl.querySelector('div.buttons').remove();
+    alertEl.addEventListener('click', () => {
+      console.log('click');
+      alertEl.remove();
+    });
+  }
 
   const alertContainer = document.querySelector('body');
   alertContainer.appendChild(alertEl);

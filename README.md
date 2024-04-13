@@ -58,7 +58,8 @@ const callbacks = [
 ```
 
 ## hide the default ok button
-To hide the default "OK" button.
+Specify the ok function to null to hide the default "OK" button.
+If no button is created, any click on the element will close it.
 ```
 const callbacks = [
   {
