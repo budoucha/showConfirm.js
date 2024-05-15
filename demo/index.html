@@ -1,0 +1,25 @@
+<html>
+
+<head>
+  <title>Demo Page</title>
+</head>
+
+<body style="display: grid; place-content: center;">
+  <h1>Demo Page</h1>
+  <button class="demo">show confirm</button>
+  <script type="module">
+    import showConfirm from '../showConfirm.js';
+    const button = document.querySelector('button.demo');
+    button.addEventListener('click', () => {
+      showConfirm("message", [
+        {
+          name: "button1",
+          function: () => {
+            document.body.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 90%)`;
+          }
+        }
+      ]);
+    });
+  </script>
+
+</html>
