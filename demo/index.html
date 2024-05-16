@@ -11,9 +11,9 @@
     import showConfirm from '../showConfirm.js';
     const button = document.querySelector('button.demo');
     button.addEventListener('click', () => {
-      showConfirm("message", [
+      showConfirm("Push Change to Switch Background Color", [
         {
-          name: "button1",
+          name: "Change",
           function: () => {
             document.body.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 90%)`;
           }
