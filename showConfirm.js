@@ -1,5 +1,5 @@
-export default async function showConfirm(message, callbacks = []) {
-  /* callback: {name:"",function:(),[label=""]} */
+export default async function showConfirm(message, buttons = []) {
+  /* button: {name:"",function:(),[label=""]} */
 
   // set paths
   const moduleUrl = new URL(import.meta.url);
@@ -32,7 +32,7 @@ export default async function showConfirm(message, callbacks = []) {
   //// ok button
   const okBtnEl = alertEl.querySelector('button.ok');
 
-  let okCallback = callbacks.find(c => c.name === "ok");
+  let okCallback = buttons.find(c => c.name === "ok");
   if (!okCallback) { // default
     okBtnEl.addEventListener('click', () => {
       alertEl.remove();
@@ -49,7 +49,7 @@ export default async function showConfirm(message, callbacks = []) {
   }
 
   //// other buttons
-  const otherCallbacks = callbacks.filter(c => c.name !== "ok");
+  const otherCallbacks = buttons.filter(c => c.name !== "ok");
   otherCallbacks.forEach(callback => {
     const buttonEl = document.createElement('button');
     buttonEl.textContent = callback.label ?? callback.name;
